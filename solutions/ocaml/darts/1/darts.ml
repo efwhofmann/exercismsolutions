@@ -1,0 +1,7 @@
+let score (x: float) (y: float): int =
+  let r : float =sqrt(x *. x +. y *. y) in
+  if r<=1. then 10
+    else if r<=5. then 5
+    else if r<=10. then 1
+    else 0;;
+  
