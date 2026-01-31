@@ -1,0 +1,17 @@
+function is_valid_triangle(sides)
+    any(sides.<=0) && return false
+    ssides = sort(sides) 
+    sum(ssides[1:2]) >= ssides[3]
+end
+
+function is_equilateral(sides)
+    is_valid_triangle(sides) && (sides[1] == sides[2] == sides[3])
+end
+
+function is_isosceles(sides)
+   is_valid_triangle(sides) && (sides[1] == sides[2] || sides[1] == sides[3] || sides[2] == sides[3])
+end
+
+function is_scalene(sides)
+   is_valid_triangle(sides) &&  sides[1] != sides[2] && sides[1] != sides[3] && sides[2] != sides[3]
+end
