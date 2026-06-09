@@ -1,0 +1,35 @@
+class Point:
+    def __init__(self, x, y):
+        self.x = None
+        self.y = None
+
+    def __eq__(self, other):
+        return self.x == other.x and self.y == other.y
+
+
+class WordSearch:
+    def __init__(self, puzzle):
+        self.puzzle = puzzle
+
+    def search(self, word):
+        height = len(self.puzzle)
+        width = len(self.puzzle[0])
+        directions = ((1,0), (-1,0), (0,1), (0,-1), (1,1), (1,-1), (-1,1), (-1,-1))
+        for y in range(height):
+            for x in range(width):
+                if self.puzzle[y][x]==word[0]:
+                    for dir in directions:
+                        letter = 0
+                        new_y = y
+                        new_x = x
+                        while self.puzzle[new_y][new_x]==word[letter]:    
+                            if letter==len(word)-1:
+                                p1 = Point(x,y)
+                                p2 = Point(new_x, new_y)
+                                return p1,p2   
+                            new_y = new_y + dir[0]
+                            new_x = new_x + dir[1]
+                            if new_x<0 or new_x>=width or new_y<0 or new_y>=height:
+                                break
+                            letter += 1                            
+        return None           
